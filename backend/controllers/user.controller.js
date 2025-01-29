@@ -86,7 +86,7 @@ export const login = async (req, res) => {
   
       const user = await User.findOne({
         $or: [{ email: usernameOrEmail }, { username: usernameOrEmail }],
-      }).select('password isVerified');
+      }).select('password isVerified role');
   
       console.log(user);
       
@@ -110,7 +110,7 @@ export const login = async (req, res) => {
       const token = await generateTokenAndSaveCookies(user._id, res);
       console.log(token);
   
-      return res.status(200).json({ message: "User login successful", user, token });
+      return res.status(200).json({ message: "User login successful!", user, token });
     } catch (error) {
       console.error(error); // Log the error for debugging purposes
       return res.status(401).json({ message: "User login failed" });

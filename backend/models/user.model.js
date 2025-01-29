@@ -24,6 +24,11 @@ const userSchema = new mongoose.Schema({
         type: 'boolean',
         default: false,
     },
+    role: {
+        type: 'string',
+        enum: ['admin', 'user'],
+        default: 'user', // Optional: You can set a default value
+    },
     token: {
         type: String, // Optional: You may want to specify a more secure type, or use `String` if it's a simple token
     },

@@ -14,11 +14,15 @@ import ForgetPassword from './pages/ForgetPassword';
 import Otp from './components/Otp';
 import ResetPassword from './pages/ResetPassword';
 import FooterNav from "./footer/FooterNav";
+import { AdminLayout } from "./pages/admin/AdminLayout";
+import SettingsPage from "./pages/admin/SettingPage";
+import AdminDashboard from "./pages/admin/AdminDashboard";
+import { UserLayout } from "./pages/user/UserLayout";
 
 function App() {
   const token = localStorage.getItem('token');
   const location = useLocation();
-      const  hideNavbar= ["/signup", "/login", "/logout","/forgot-password","/otp"].includes(location.pathname);
+      const  hideNavbar= ["/signup", "/login", "/logout","/forgot-password","/otp","/admin/admin-setting","/admin/admin-dashboard",].includes(location.pathname);
   return (
     <>
       {hideNavbar ? "" : <Navbar />}
@@ -33,8 +37,10 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/otp" element={<Otp />} />
         <Route path="/reset-password/:resetPasswordOtp" element={<ResetPassword /> } />
+        <Route path="/admin/admin-dashboard" element={<AdminLayout><AdminDashboard /></AdminLayout>} />
+        <Route path="/admin/admin-setting" element={<AdminLayout><SettingsPage /></AdminLayout>}/>
       </Routes>
-      {hideNavbar ? "" : <FooterNav />}
+      <FooterNav />
       </>
      
   

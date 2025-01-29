@@ -12,7 +12,7 @@ const app = express();
 const PORT = process.env.PORT || 2000;  // Set default port if not specified in .env
 
 app.use(cors({
-    origin: 'http://localhost:5174',  // Your frontend's origin
+    origin: 'http://localhost:5173',  // Your frontend's origin
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,  // Allow credentials (cookies, authorization headers)

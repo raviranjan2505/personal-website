@@ -103,10 +103,18 @@ const Login = () => {
       );
 
       console.log(response)
+      console.log(response.data.user.role)
       localStorage.setItem('token', response.data.token);
-      setTimeout(() => {
-        navigate('/dashboard');
-      }, 2000);
+      if(response.data.user.role === 'admin'){
+        setTimeout(() => {
+          navigate('/admin/admin-dashboard');
+        }, 2000);
+      }else{
+        setTimeout(() => {
+          navigate('/dashboard');
+        }, 2000);
+      }
+      
 
       alert(response.data.message);
       console.log("hello");
